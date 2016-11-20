@@ -12,12 +12,12 @@ let DetailedMovieSchema = new Schema({
 */
     imdbId: {
         type: String,
-        required: false
+        required: true
     },
 
     coverImage: {
         type: [String],
-        required: false
+        required: true
     },
 
     trailer: {
@@ -27,27 +27,27 @@ let DetailedMovieSchema = new Schema({
 
     title: {
         type: String,
-        required: false
+        required: true
     },
 
      description: {
         type: String,
-        required: false
+        required: true
     },
 
     categories: {
         type: [String],
-        required: false
+        required: true
     },
 
     releaseDate: {
         type: Date,
-        required: false
+        required: true
     },
 
     listOfActors: {
         type: [String],
-        required: false
+        required: true
     }
 
     //nestedDocuments: {
@@ -57,18 +57,6 @@ let DetailedMovieSchema = new Schema({
 
 
 });
-
-//At least one cover image (its link)
-//Optional trailer (its link), if one is available
-//Title
-//Description/Storyline
-//Categories (Genres)
-//Release date
-//List of actors
-//Nested documents
-//Have name of the role in the movie, name, id in IMDB and profile image (its link)
-
-//  /title/tt0067992/?ref_=adv_li_tt
 
 let DetailedMovie;
 DetailedMovieSchema.statics.getDetailedMovieByNameAndUrl =
