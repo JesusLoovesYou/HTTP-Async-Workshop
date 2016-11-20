@@ -4,8 +4,22 @@
 const mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
-let DetailedMovieSchema = new Schema({
- /*   name: {
+const movieActorSchema = new Schema({
+    profileImage: {
+        type: String,
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    biography: {
+        type: String
+    },
+    movies: []
+});
+
+const DetailedMovieSchema = new Schema({
+    /*   name: {
         type: String,
         required: false
     },
@@ -30,7 +44,7 @@ let DetailedMovieSchema = new Schema({
         required: false
     },
 
-     description: {
+    description: {
         type: String,
         required: false
     },
@@ -46,13 +60,13 @@ let DetailedMovieSchema = new Schema({
     },
 
     listOfActors: {
-        type: [String],
+        type: [movieActorSchema],
         required: false
     }
 
     //nestedDocuments: {
-      //  type: [String],
-        //required: true
+    //  type: [String],
+    //required: true
     //}
 
 
@@ -72,11 +86,11 @@ let DetailedMovieSchema = new Schema({
 
 let DetailedMovie;
 DetailedMovieSchema.statics.getDetailedMovieByNameAndUrl =
-    function (detailedInfo) {
+    function(detailedInfo) {
         return new DetailedMovie(detailedInfo);
     };
 
-DetailedMovieSchema.virtual.imdbUrl = function () {
+DetailedMovieSchema.virtual.imdbUrl = function() {
     return `http://imdb.com/title/${this.imdbId}/?ref_=adv_li_tt`;
 };
 
